@@ -12,6 +12,7 @@ model User {
   photo        String?
   name         String
   email        String   @unique
+  password     String 
   spent        Decimal  @db.Decimal(10,2)
   phone        String
   address      String?
