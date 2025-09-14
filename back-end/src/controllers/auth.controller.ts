@@ -13,4 +13,23 @@ export class AuthController {
       next(error);
     }
   };
+
+  login = async (req: Request, res: Response) => {
+    try {
+      const data = req.body;
+      const result = await this.authService.login(data);
+      res.status(200).json(result);
+    } catch (error: any) {
+      res.status(401).json({ message: error.message });
+    }
+  };
+
+  logout = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const result = await this.authService.logout();
+      res.status(200).json(result);
+    } catch (error) {
+      next(error);
+    }
+  };
 }

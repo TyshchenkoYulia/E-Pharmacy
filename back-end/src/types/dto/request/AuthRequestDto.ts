@@ -4,3 +4,8 @@ export interface RegisterUserDto {
   phone: string;
   password: string;
 }
+
+export interface LoginUserDto {
+  email: string;
+  password: string;
+}

@@ -1,16 +1,19 @@
 import { Request, Response, NextFunction } from "express";
 import { RegisterUserDto } from "../types/dto/request/AuthRequestDto";
+import {
+  loginSchema,
+  logoutSchema,
+  registerSchema,
+} from "../validations/AuthSchema";
 
 export const validateRegisterBody = (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
-  const { name, email, phone, password } = req.body as RegisterUserDto;
-  if (!name || !email || !phone || !password) {
-    return res.status(400).json({
-      message: "Усі поля (name, email, phone, password) обов’язкові.",
-    });
+  const { error } = registerSchema.validate(req.body);
+  if (error) {
+    return res.status(400).json({ message: error.details[0].message });
   }
   next();
 };
@@ -20,9 +23,21 @@ export const validateLoginBody = (
   res: Response,
   next: NextFunction
 ) => {
-  const { email, password } = req.body;
-  if (!email || !password) {
-    return res.status(400).json({ message: "Email і password обов’язкові." });
+  const { error } = loginSchema.validate(req.body);
+  if (error) {
+    return res.status(400).json({ message: error.details[0].message });
+  }
+  next();
+};
+
+export const validateLogoutBody = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const { error } = logoutSchema.validate(req.body);
+  if (error) {
+    return res.status(400).json({ message: error.details[0].message });
   }
   next();
 };

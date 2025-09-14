@@ -1,8 +1,15 @@
 import prisma from "../config/prismaClient";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { RegisterUserDto } from "../types/dto/request/AuthRequestDto";
-import { RegisterResponseDto } from "../types/dto/response/AuthResponseDto";
+import {
+  LoginUserDto,
+  RegisterUserDto,
+} from "../types/dto/request/AuthRequestDto";
+import {
+  LoginResponseDto,
+  LogoutResponseDto,
+  RegisterResponseDto,
+} from "../types/dto/response/AuthResponseDto";
 
 export class AuthService {
   async register(data: RegisterUserDto): Promise<RegisterResponseDto> {
@@ -37,5 +44,30 @@ export class AuthService {
     });
 
     return { message: "Користувач успішно зареєстрований." };
+  }
+
+  async login(data: LoginUserDto): Promise<LoginResponseDto> {
+    const { email, password } = data;
+
+    const user = await prisma.user.findUnique({ where: { email } });
+    if (!user) throw new Error("Невірні облікові дані");
+
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+    if (!isPasswordValid) throw new Error("Невірні облікові дані");
+
+    const token = jwt.sign(
+      { id: user.id, email: user.email },
+      process.env.JWT_SECRET as string,
+      { expiresIn: "1h" }
+    );
+
+    return {
+      message: "Вхід виконано успішно",
+      token,
+    };
+  }
+
+  async logout(): Promise<LogoutResponseDto> {
+    return { message: "Вихід виконано успішно." };
   }
 }
