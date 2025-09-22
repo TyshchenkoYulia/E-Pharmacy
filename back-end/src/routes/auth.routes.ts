@@ -3,7 +3,6 @@ import { AuthController } from "../controllers/auth.controller";
 import { AuthService } from "../services/auth.service";
 import {
   validateLoginBody,
-  validateLogoutBody,
   validateRegisterBody,
 } from "../middlewares/validateAuthBody";
 
@@ -12,6 +11,6 @@ const authController = new AuthController(new AuthService());
 
 router.post("/register", validateRegisterBody, authController.register);
 router.post("/login", validateLoginBody, authController.login);
-router.post("/logout", validateLogoutBody, authController.logout);
+router.post("/logout", authController.logout);
 
 export default router;

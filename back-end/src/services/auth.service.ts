@@ -10,6 +10,7 @@ import {
   LogoutResponseDto,
   RegisterResponseDto,
 } from "../types/dto/response/AuthResponseDto";
+import { ApiError } from "../utils/ApiError";
 
 export class AuthService {
   async register(data: RegisterUserDto): Promise<RegisterResponseDto> {
@@ -19,11 +20,8 @@ export class AuthService {
     const existingUser = await prisma.user.findUnique({
       where: { email },
     });
-    if (existingUser) {
-      const error: any = new Error("Користувач вже зареєстрований.");
-      error.status = 409;
-      throw error;
-    }
+    if (existingUser)
+      throw ApiError.conflict("Користувач з такою поштою вже існує");
 
     // Хешування пароля
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -39,10 +37,6 @@ export class AuthService {
       },
     });
 
-    const token = jwt.sign({ email }, process.env.JWT_SECRET || "secret", {
-      expiresIn: "1d",
-    });
-
     return { message: "Користувач успішно зареєстрований." };
   }
 
@@ -50,15 +44,15 @@ export class AuthService {
     const { email, password } = data;
 
     const user = await prisma.user.findUnique({ where: { email } });
-    if (!user) throw new Error("Невірні облікові дані");
+    if (!user) throw ApiError.unauthorized("Невірні облікові дані");
 
     const isPasswordValid = await bcrypt.compare(password, user.password);
-    if (!isPasswordValid) throw new Error("Невірні облікові дані");
+    if (!isPasswordValid) throw ApiError.unauthorized("Невірні облікові дані");
 
     const token = jwt.sign(
       { id: user.id, email: user.email },
       process.env.JWT_SECRET as string,
-      { expiresIn: "1h" }
+      { expiresIn: "10m" }
     );
 
     return {

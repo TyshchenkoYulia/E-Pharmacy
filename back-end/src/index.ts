@@ -3,25 +3,16 @@ import cors from "cors";
 import { config } from "./config/config";
 import prisma from "./config/prismaClient";
 import routes from "./routes/global.routes";
+import { errorHandler } from "./middlewares/errorHandler";
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
-app.use("/", routes);
+app.use("/api", routes);
 
-app.use(
-  (
-    err: any,
-    req: express.Request,
-    res: express.Response,
-    next: express.NextFunction
-  ) => {
-    console.error(err);
-    res.status(500).json({ message: err.message || "Internal server error" });
-  }
-);
+app.use(errorHandler);
 
 async function testDbConnection() {
   try {
