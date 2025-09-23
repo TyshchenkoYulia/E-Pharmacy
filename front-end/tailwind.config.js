@@ -9,6 +9,8 @@ export default {
       greenPrimary: "#59B17A",
       whitePrimary: "#FFFFFF",
       whiteSecondary: "#F7F8FA",
+      backgroundColor: "#F5F5F5",
+      grayColor: "#1D1E211A",
     },
     fontFamily: {
       sans: ["Inter", "sans-serif"],

@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 /* Глобальні базові стилі */
+body {
+  @apply bg-backgroundColor text-primaryText font-sans;
+}
+
 @layer base {
   html {
     font-family: "Inter", sans-serif;
@@ -15,14 +19,12 @@
     padding: 0;
   }
 
-  /* Для всіх зображень */
   img {
     display: block;
     max-width: 100%;
     height: auto;
   }
 
-  /* Скидаємо списки */
   ul,
   ol {
     margin: 0;
@@ -30,7 +32,6 @@
     list-style: none;
   }
 
-  /* Скидаємо заголовки */
   h1,
   h2,
   h3,
@@ -45,18 +46,15 @@
     margin: 0;
   }
 
-  /* Базові контейнери без падінгів */
   div {
     padding: 0;
   }
 
-  /* Лінки */
   a {
     color: inherit;
     text-decoration: none;
   }
 
-  /* Кнопки */
   button {
     font: inherit;
     border: none;
