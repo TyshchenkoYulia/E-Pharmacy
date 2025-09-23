@@ -1,3 +1,66 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Глобальні базові стилі */
+@layer base {
+  html {
+    font-family: "Inter", sans-serif;
+    color: theme("colors.primaryText");
+    background-color: theme("colors.whitePrimary");
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Для всіх зображень */
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Скидаємо списки */
+  ul,
+  ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  /* Скидаємо заголовки */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+    font-weight: inherit;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  /* Базові контейнери без падінгів */
+  div {
+    padding: 0;
+  }
+
+  /* Лінки */
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* Кнопки */
+  button {
+    font: inherit;
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+}
