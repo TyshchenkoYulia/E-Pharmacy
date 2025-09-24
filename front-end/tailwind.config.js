@@ -7,6 +7,7 @@ export default {
       primaryText: "#252539",
       secondaryText: "#93939A",
       greenPrimary: "#59B17A",
+      hoverGreen: "#3F945F",
       whitePrimary: "#FFFFFF",
       whiteSecondary: "#F7F8FA",
       backgroundColor: "#F5F5F5",
