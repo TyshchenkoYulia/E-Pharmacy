@@ -7,7 +7,10 @@ export default function Header() {
   const isHome = location.pathname === "/";
 
   return (
-    <header className="fixed top-0 left-0 w-full bg-transparent z-50 flex items-center justify-between px-4 tablet:px-6 desktop:px-8 h-16">
+    <header
+      className="fixed top-0 left-0 w-full bg-white/70 backdrop-blur-sm z-50 flex 
+    items-center justify-between px-4 tablet:px-6 desktop:px-8 h-16"
+    >
       <Logo variant={isHome ? "white" : "default"} />
       <NavigationLinks isHome={isHome} />
     </header>
