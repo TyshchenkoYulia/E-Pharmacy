@@ -42,7 +42,6 @@ export default function ReviewsItem() {
           key={idx}
           className={`${visibilityClasses[idx]} relative flex flex-col items-center min-w-[280px]`}
         >
-          {/* Фото */}
           <img
             src={review.photo}
             alt={review.name}
@@ -50,7 +49,6 @@ export default function ReviewsItem() {
             rounded-full object-cover border-2 border-whitePrimary shadow-md"
           />
 
-          {/* Картка */}
           <div className="bg-whitePrimary rounded-[27px] shadow-lg w-[280px] h-[232px] p-6 flex flex-col items-center justify-center text-center">
             <h3 className="font-bold text-[20px] leading-[30px] mt-8">
               {review.name}
