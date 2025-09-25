@@ -5,6 +5,7 @@ import StarIcon from "../assets/img/star-icon.svg";
 import BgIcon1 from "../assets/img/bg-icon-1.svg";
 import BgIcon2 from "../assets/img/bg-icon-2.svg";
 import BgIcon3 from "../assets/img/bg-icon-3.svg";
+import Pagination from "./Pagination";
 
 interface Store {
   name: string;
@@ -157,7 +158,7 @@ const stores: Store[] = [
   },
 ];
 
-const ITEMS_PER_PAGE = 9;
+const ITEMS_PER_PAGE = 8;
 
 export default function Stores() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -171,32 +172,51 @@ export default function Stores() {
 
   return (
     <section className="mt-[40px]">
-      <div className="flex flex-col gap-[20px] justify-center items-center ">
+      <div
+        className=" grid gap-[20px] justify-center
+      grid-cols-1
+      tablet:grid-cols-2
+      desktop:grid-cols-3
+      justify-items-center"
+      >
         {paginatedStores.map((store, index) => (
           <div
             key={index}
             className="relative  h-[202px] w-[334px]  rounded-[27px] bg-lightGreen 
-            p-[32px] hover:shadow-md transition"
+            p-[32px] hover:shadow-md transition
+            tablet:h-[276px] tablet:w-[344px] tablet:p-[40px]"
           >
-            <div className="flex justify-between items-start">
+            <div className="flex justify-between items-start tablet:flex-col">
               <div>
-                <h3 className="text-[16px] leading-[18px] font-600 mb-[32px]">
+                <h3
+                  className="text-[16px] leading-[18px] font-600 mb-[32px]
+                tablet:text-[20px]  tablet:leading-[24px] tablet:mb-[20px]"
+                >
                   {store.name}
                 </h3>
 
-                <div className="flex gap-[8px] mb-[18px] items-start">
+                <div
+                  className="flex gap-[8px] mb-[18px] items-start
+                "
+                >
                   <img src={AddressIcon} alt="Address Icon" />
                   <div className="flex flex-col ">
-                    <p className="text-[14px] leading-[18px] font-400 text-secondaryText">
+                    <p
+                      className="text-[14px] leading-[18px] font-400 text-secondaryText
+                    tablet:text-[16px]  tablet:leading-[20px]"
+                    >
                       {store.address}
                     </p>
-                    <p className="text-[14px] leading-[18px] font-400 text-secondaryText">
+                    <p
+                      className="text-[14px] leading-[18px] font-400 text-secondaryText
+                    tablet:text-[16px]  tablet:leading-[20px]"
+                    >
                       {store.city}
                     </p>
                   </div>
                 </div>
 
-                <div className="flex gap-[8px]">
+                <div className="flex gap-[8px] ">
                   <img src={PhoneIcon} alt="Phone Icon" />
                   <p className="text-[14px] leading-[18px] font-400 text-secondaryText">
                     {store.phone}
@@ -204,14 +224,20 @@ export default function Stores() {
                 </div>
               </div>
 
-              <div className="flex items-center gap-[14px]">
-                <div className="flex gap-[6px]">
+              <div className="flex items-center gap-[14px] tablet:mt-[36px] ">
+                <button
+                  className="hidden tablet:inline-block py-[10px] px-[16px] rounded-[27px]
+               bg-greenPrimary  text-[14px] leading-[14px] text-500 text-whitePrimary
+             transition-transform hover:scale-110 hover:text-hoverGreen"
+                >
+                  Visit Store
+                </button>
+                <div className="flex gap-[6px] tablet:ml-[30px]">
                   <img src={StarIcon} alt="Star Icon" />
                   <span className="text-[14px] leading-[18px] font-medium text-primaryText">
                     {store.rating}
                   </span>
                 </div>
-
                 {(() => {
                   const isOpen = Math.random() > 0.5;
 
@@ -230,13 +256,6 @@ export default function Stores() {
                 })()}
               </div>
             </div>
-            <button
-              className="hidden tablet:inline-block py-[10px] px-[16px] rounded-[27px]
-               bg-greenPrimary  text-[14px] leading-[14px] text-500 text-whitePrimary
-             transition-transform hover:scale-110 hover:text-hoverGreen"
-            >
-              Visit Store
-            </button>
 
             <img
               src={BgIcon1}
@@ -256,37 +275,11 @@ export default function Stores() {
           </div>
         ))}
       </div>
-
-      {/* пагінація */}
-      <div className="flex justify-center gap-2 mt-6">
-        <button
-          onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
-          disabled={currentPage === 1}
-          className="px-3 py-1 border rounded disabled:opacity-50"
-        >
-          Prev
-        </button>
-
-        {Array.from({ length: totalPages }, (_, i) => (
-          <button
-            key={i}
-            onClick={() => setCurrentPage(i + 1)}
-            className={`px-3 py-1 border rounded ${
-              currentPage === i + 1 ? "bg-greenPrimary text-white" : ""
-            }`}
-          >
-            {i + 1}
-          </button>
-        ))}
-
-        <button
-          onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
-          disabled={currentPage === totalPages}
-          className="px-3 py-1 border rounded disabled:opacity-50"
-        >
-          Next
-        </button>
-      </div>
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={setCurrentPage}
+      />
     </section>
   );
 }
