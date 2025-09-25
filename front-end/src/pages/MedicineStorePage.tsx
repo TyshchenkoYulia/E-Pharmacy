@@ -1,7 +1,10 @@
+import Stores from "../components/Stores";
+
 export default function MedicineStorePage() {
   return (
-    <div className="p-8">
-      <h1 className="text-3xl font-bold mb-4">MedicineStorePage</h1>
+    <div className="mt-[120px] mb-[80px] px-[20px]">
+      <h1 className="text-[28px] leading-[32px] font-bold">Medicine Store</h1>
+      <Stores />
     </div>
   );
 }

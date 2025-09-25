@@ -89,7 +89,8 @@ export default function RegisterForm() {
       <button
         type="submit"
         className="w-[335px] h-[44px] bg-greenPrimary text-whitePrimary 
-        font-semibold rounded-[60px] mt-2 mx-auto tablet:w-[280px] transition-transform hover:scale-110 hover:text-hoverGreen"
+        font-semibold rounded-[60px] mt-2 mx-auto 
+        tablet:w-[280px] transition-transform hover:scale-110 hover:text-hoverGreen"
       >
         Register
       </button>
