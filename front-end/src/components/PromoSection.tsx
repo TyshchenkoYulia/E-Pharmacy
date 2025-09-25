@@ -1,10 +1,10 @@
 import Features from "./Features";
-import PromoBanner from "./PromoBanner";
+import PromoContent from "./PromoContent";
 
 export default function PromoSection() {
   return (
     <>
-      <PromoBanner />
+      <PromoContent />
       <Features />
     </>
   );

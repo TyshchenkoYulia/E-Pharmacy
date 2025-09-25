@@ -1,13 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import PromoImage from "./PromoImage";
 
-export default function PromoBanner() {
+export default function PromoContent() {
   const navigate = useNavigate();
 
   return (
     <section
       className="flex flex-col justify-center items-center 
-                 bg-greenPrimary mt-[80px] mb-[40px] mx-[20px] 
+                 bg-greenPrimary  my-[40px] mx-[20px] 
                  h-[674px]  rounded-[32px] p-6 text-whitePrimary
                   tablet:h-[912px] tablet:mt-[120px] tablet:mb-[64px]
                   desktop:h-[486px] desktop:flex-row desktop:py-[40px]
