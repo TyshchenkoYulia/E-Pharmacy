@@ -3,10 +3,15 @@ import CurrencyPoundIcon from "@mui/icons-material/CurrencyPound";
 import { Link } from "react-router-dom";
 
 export default function MedicineCard({ product }: { product: Product }) {
+  const addToCart = () => {
+    console.log("Added to cart:", { product });
+    //  в кошик
+  };
+
   return (
     <section className=" flex flex-col items-center gap-[8px]">
       <div
-        className="h-[300px] w-[335px] border border-secondaryText rounded-[20px] overflow-hidden
+        className="h-[300px] w-[335px] border border-greenPrimary rounded-[20px] overflow-hidden
       tablet:h-[260px] tablet:w-[226px]
       desktop:h-[280px] desktop:w-[280px]"
       >
@@ -42,10 +47,7 @@ export default function MedicineCard({ product }: { product: Product }) {
 
         <div className="flex items-center  justify-between ">
           <button
-            onClick={() => {
-              console.log("Add to cart:", product);
-              // кладемо в корзину
-            }}
+            onClick={addToCart}
             className="px-[16px] py-[10px] bg-greenPrimary text-whitePrimary 
          rounded-[24px] 
          transition-transform hover:scale-110 hover:text-hoverGreen"
