@@ -160,7 +160,7 @@ const stores: Store[] = [
 
 const ITEMS_PER_PAGE = 8;
 
-export default function Stores() {
+export default function StoresList() {
   const [currentPage, setCurrentPage] = useState(1);
 
   const totalPages = Math.ceil(stores.length / ITEMS_PER_PAGE);
