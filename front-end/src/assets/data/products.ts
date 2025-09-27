@@ -1,5 +1,6 @@
 import type { Product } from "../../types/productTypes";
 import productReview from "../data/productReview";
+
 const products: Product[] = [
   {
     id: 0,
