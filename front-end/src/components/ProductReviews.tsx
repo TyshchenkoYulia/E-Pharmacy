@@ -1,3 +1,9 @@
+import ProductReviewList from "./ProductReviewList";
+
 export default function ProductReviews() {
-  return <>Product Reviews</>;
+  return (
+    <section>
+      <ProductReviewList />
+    </section>
+  );
 }

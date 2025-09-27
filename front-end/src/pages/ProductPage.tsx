@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import products from "../assets/data/products";
-import type { Product } from "../assets/data/products";
+import type { Product } from "../types/productTypes";
 import ProductOverview from "../components/ProductOverview";
 import ProductContainer from "../components/ProductContainer";
 
@@ -13,7 +13,10 @@ export default function ProductPage() {
   }
 
   return (
-    <section className="mt-[120px] mb-[80px] px-[20px]">
+    <section
+      className="mt-[120px] mb-[80px] px-[20px] tablet:px-[32px] 
+    desktop:flex desktop:gap-[20px] desktop:px-[128px]"
+    >
       <ProductOverview product={product as Product} />
       <ProductContainer />
     </section>

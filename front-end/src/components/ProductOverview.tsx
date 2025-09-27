@@ -33,7 +33,7 @@ export default function ProductOverview({ product }: Props) {
       </div>
 
       <div
-        className="flex flex-col boder border-whitePrimary bg-whitePrimary
+        className="flex flex-col boder border-none bg-whitePrimary
       h-[160px] w-[335px] rounded-[20px] p-[20px]
       tablet:h-[284px] tablet:w-[324px] tablet:p-[32px]
       desktop:w-[364px] desktop:h-[240px]"

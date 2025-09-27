@@ -8,23 +8,27 @@ export default function ProductContainer() {
   );
 
   return (
-    <div className="mt-[40px]">
+    <section
+      className="mt-[8px] mx-auto p-[20px] w-[335px] border border-none bg-whitePrimary rounded-[27px]
+    tablet:mt-[18px] tablet:p-[32px] tablet:w-[704px]
+     desktop:mt-0 desktop:p-[40px] desktop:w-[800px]"
+    >
       <div className="flex gap-[20px] ">
         <button
-          className={`pb-2 ${
+          className={` ${
             activeTab === "description"
-              ? "border-b-2 border-greenPrimary font-semibold"
-              : "text-secondaryText"
+              ? "py-[8px] px-[25px] border font-500 bg-greenPrimary text-whitePrimary rounded-[40px] font-semibold transition-transform hover:scale-105 hover:text-whitePrimary"
+              : "py-[8px] px-[25px] border rounded-[40px] text-hoverGreen bg-lightGreen transition-transform hover:scale-105 hover:text-hoverGreen"
           }`}
           onClick={() => setActiveTab("description")}
         >
           Description
         </button>
         <button
-          className={`pb-2 ${
+          className={`${
             activeTab === "reviews"
-              ? "border-b-2 border-greenPrimary font-semibold"
-              : "text-secondaryText"
+              ? "py-[8px] px-[25px] border font-500 bg-greenPrimary text-whitePrimary rounded-[40px] font-semibold transition-transform hover:scale-105 hover:text-whitePrimary"
+              : "py-[8px] px-[25px] border rounded-[40px] text-hoverGreen bg-lightGreen transition-transform hover:scale-105 hover:text-hoverGreen"
           }`}
           onClick={() => setActiveTab("reviews")}
         >
@@ -32,11 +36,11 @@ export default function ProductContainer() {
         </button>
       </div>
 
-      <div className="mt-[20px]">
+      <div className="mt-[20px] tablet:mt-[32px]">
         {activeTab === "description" && <ProductDescription />}
 
         {activeTab === "reviews" && <ProductReviews />}
       </div>
-    </div>
+    </section>
   );
 }
