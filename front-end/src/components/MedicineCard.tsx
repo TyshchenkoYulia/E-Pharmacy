@@ -1,11 +1,21 @@
 import type { Product } from "../types/productTypes";
 import CurrencyPoundIcon from "@mui/icons-material/CurrencyPound";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import LoginModal from "./LoginModal";
 
 export default function MedicineCard({ product }: { product: Product }) {
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+
+  const isAuthenticated = false; 
+
   const addToCart = () => {
+    if (!isAuthenticated) {
+      setIsLoginModalOpen(true);
+      return;
+    }
     console.log("Added to cart:", { product });
-    //  в кошик
+    // в кошик
   };
 
   return (
@@ -63,6 +73,11 @@ export default function MedicineCard({ product }: { product: Product }) {
           </Link>
         </div>
       </div>
+
+      <LoginModal
+        isOpen={isLoginModalOpen}
+        onClose={() => setIsLoginModalOpen(false)}
+      />
     </section>
   );
 }

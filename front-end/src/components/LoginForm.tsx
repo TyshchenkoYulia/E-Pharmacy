@@ -34,7 +34,7 @@ export default function LoginForm() {
            border-grayColor rounded-[60px] outline-none mx-auto"
       />
       {errors.email && (
-        <span className="text-red-500 text-sm col-span-full text-center tablet:text-left">
+        <span className="text-redText text-sm text-center">
           {errors.email.message}
         </span>
       )}
@@ -47,7 +47,7 @@ export default function LoginForm() {
            border-grayColor rounded-[60px] outline-none mx-auto"
       />
       {errors.password && (
-        <span className="text-red-500 text-sm col-span-full text-center tablet:text-left">
+        <span className="text-redText text-sm text-center">
           {errors.password.message}
         </span>
       )}

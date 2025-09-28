@@ -37,7 +37,7 @@ export default function RegisterForm() {
            border-grayColor rounded-[60px] outline-none mx-auto"
         />
         {errors.username && (
-          <span className="text-red-500 text-sm col-span-full text-center tablet:text-left">
+          <span className="text-redText text-sm text-center">
             {errors.username.message}
           </span>
         )}
@@ -50,7 +50,7 @@ export default function RegisterForm() {
            border-grayColor rounded-[60px] outline-none mx-auto"
         />
         {errors.email && (
-          <span className="text-red-500 text-sm col-span-full text-center tablet:text-left">
+          <span className="text-redText text-sm text-center">
             {errors.email.message}
           </span>
         )}
@@ -66,7 +66,7 @@ export default function RegisterForm() {
         />
 
         {errors.phone && (
-          <span className="text-red-500 text-sm col-span-full text-center tablet:text-left">
+          <span className="text-redText text-sm text-center">
             {errors.phone.message}
           </span>
         )}
@@ -80,7 +80,7 @@ export default function RegisterForm() {
         />
 
         {errors.password && (
-          <span className="text-red-500 text-sm col-span-full text-center tablet:text-left">
+          <span className="text-redText text-sm text-center">
             {errors.password.message}
           </span>
         )}
