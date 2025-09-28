@@ -1,6 +1,6 @@
 import { useState } from "react";
 import products from "../assets/data/products";
-import type { Product } from "../assets/data/products";
+import type { Product } from "../types/productTypes";
 import MedicineFilterContent from "../components/MedicineFilterContent";
 import MedicineList from "../components/MedicineList";
 

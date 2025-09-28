@@ -11,3 +11,11 @@ export interface Review {
   photo: string;
   testimonial: string;
 }
+
+export interface NearestStore {
+  name: string;
+  address: string;
+  city: string;
+  phone: string;
+  rating: number;
+}

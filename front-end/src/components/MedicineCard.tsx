@@ -1,4 +1,4 @@
-import type { Product } from "../assets/data/products";
+import type { Product } from "../types/productTypes";
 import CurrencyPoundIcon from "@mui/icons-material/CurrencyPound";
 import { Link } from "react-router-dom";
 

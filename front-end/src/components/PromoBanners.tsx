@@ -17,7 +17,7 @@ export default function PromoBanners() {
   return (
     <section
       className="flex flex-col justify-center items-center gap-[16px] 
-    my-[40px] mx-[20px] 
+    mt-[40px] mx-[20px] tablet:mt-[64px] tablet:mx-[32px]
     tablet:gap-[24px] tablet:grid tablet:grid-cols-2 tablet:justify-items-center
      desktop:grid-cols-3"
     >

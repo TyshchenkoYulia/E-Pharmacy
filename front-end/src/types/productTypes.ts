@@ -17,3 +17,13 @@ export interface ProductReview {
   text: string;
   rating: number;
 }
+
+export interface MedicinalUse {
+  title: string;
+  text: string;
+}
+
+export interface ProductDescriptionType {
+  general: string;
+  medicinalUses: MedicinalUse[];
+}

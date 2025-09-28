@@ -7,9 +7,10 @@ export default function PromoContent() {
   return (
     <section
       className="flex flex-col justify-center items-center 
-                 bg-greenPrimary  my-[40px] mx-[20px] 
-                 h-[674px]  rounded-[32px] p-6 text-whitePrimary
+                 bg-greenPrimary  mt-[80px] mb-[40px] mx-[20px] 
+                 h-[674px]  rounded-[32px]  text-whitePrimary
                   tablet:h-[912px] tablet:mt-[120px] tablet:mb-[64px]
+                  tablet:mx-[32px] 
                   desktop:h-[486px] desktop:flex-row desktop:py-[40px]
                    desktop:pr-[40px] desktop:pl-[80px] "
     >
