@@ -6,7 +6,10 @@ import FooterBottom from "./FooterBottom";
 
 export default function Footer() {
   return (
-    <footer className="bg-greenPrimary text-whiteSecondary h-[334px] tablet:h-[380px] ">
+    <footer
+      className="bg-greenPrimary text-whiteSecondary
+    p-[20px] tablet:p-[32px] desktop:p-[40px]"
+    >
       <div className="flex justify-between items-center tablet:ml-[12px] tablet:mt-[12px]">
         <Logo variant="white" />
         <FooterSocials />

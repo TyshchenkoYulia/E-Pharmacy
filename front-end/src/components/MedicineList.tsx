@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import products from "../assets/data/products";
-import type { Product } from "../assets/data/products";
+import type { Product } from "../types/productTypes";
 import MedicineCard from "./MedicineCard";
 import Pagination from "./Pagination";
 
@@ -29,7 +29,7 @@ export default function MedicineList({ filteredProducts }: Props) {
   const totalPages = Math.max(1, Math.ceil(source.length / ITEMS_PER_PAGE));
 
   return (
-    <section className="mt-[40px]">
+    <>
       <div
         className="grid gap-[20px] justify-center grid-cols-1 tablet:grid-cols-3
        desktop:grid-cols-4 justify-items-center"
@@ -44,6 +44,6 @@ export default function MedicineList({ filteredProducts }: Props) {
         totalPages={totalPages}
         onPageChange={(p) => setCurrentPage(p)}
       />
-    </section>
+    </>
   );
 }

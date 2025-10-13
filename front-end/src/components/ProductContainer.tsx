@@ -8,7 +8,7 @@ export default function ProductContainer() {
   );
 
   return (
-    <section
+    <div
       className="mt-[8px] mx-auto p-[20px] w-[335px] border border-none bg-whitePrimary rounded-[27px]
     tablet:mt-[18px] tablet:p-[32px] tablet:w-[704px]
      desktop:mt-0 desktop:p-[40px] desktop:w-[800px]"
@@ -41,6 +41,6 @@ export default function ProductContainer() {
 
         {activeTab === "reviews" && <ProductReviews />}
       </div>
-    </section>
+    </div>
   );
 }

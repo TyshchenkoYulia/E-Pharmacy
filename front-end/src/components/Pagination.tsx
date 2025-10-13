@@ -15,7 +15,7 @@ export default function Pagination({
   onPageChange,
 }: PaginationProps) {
   return (
-    <section className="flex justify-center items-center gap-2 mt-[40px] tablet:mt-[80px]">
+    <div className="flex justify-center items-center gap-2 mt-[40px] tablet:mt-[80px]">
       {/* На початок */}
       <button
         onClick={() => onPageChange(1)}
@@ -73,6 +73,6 @@ export default function Pagination({
       >
         <KeyboardDoubleArrowRightIcon />
       </button>
-    </section>
+    </div>
   );
 }

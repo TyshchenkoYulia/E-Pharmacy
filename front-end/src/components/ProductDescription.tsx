@@ -2,7 +2,7 @@ import productDescription from "../assets/data/productDescription";
 
 export default function ProductDescription() {
   return (
-    <section
+    <div
       className="flex flex-col gap-[20px] text-[14px] leading-[18px]
     tablet:text-[16px] tablet:leading-[24px]"
     >
@@ -18,6 +18,6 @@ export default function ProductDescription() {
           </li>
         ))}
       </ul>
-    </section>
+    </div>
   );
 }

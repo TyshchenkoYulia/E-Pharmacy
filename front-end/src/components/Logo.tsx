@@ -12,7 +12,7 @@ export default function Logo({ variant = "default" }: LogoProps) {
   return (
     <Link
       to="/"
-      className="flex items-center gap-3 mt-[20px] ml-[20px] mobile:gap-3 tablet:gap-4 desktop:gap-4"
+      className="flex items-center gap-3  mobile:gap-3 tablet:gap-4 desktop:gap-4"
     >
       <img
         src={isWhite ? LogoWhite : LogoGreen}

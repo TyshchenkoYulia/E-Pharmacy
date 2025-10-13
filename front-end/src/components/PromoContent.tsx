@@ -5,19 +5,19 @@ export default function PromoContent() {
   const navigate = useNavigate();
 
   return (
-    <section
-      className="flex flex-col justify-center items-center 
-                 bg-greenPrimary  mt-[80px] mb-[40px] mx-[20px] 
-                 h-[674px]  rounded-[32px]  text-whitePrimary
-                  tablet:h-[912px] tablet:mt-[120px] tablet:mb-[64px]
-                  tablet:mx-[32px] 
-                  desktop:h-[486px] desktop:flex-row desktop:py-[40px]
-                   desktop:pr-[40px] desktop:pl-[80px] "
+    <div
+      className="
+                 bg-greenPrimary  mb-[40px] tablet:mb-[64px] 
+                 p-[20px] tablet:py-[40px] tablet:px-[48px] 
+                 desktop:py-[40px] desktop:pr-[40px] desktop:pl-[80px] 
+                 rounded-[32px]  text-whitePrimary
+                desktop:flex
+                  "
     >
       <div>
-        <div className="  w-[290px] mt-[40px] tablet:w-[488px] tablet:mt-[80px]">
+        <div className="  w-[290px]  tablet:w-[488px] ">
           <h2
-            className="text-[28px] leading-[32px]font-bold mb-[20px] 
+            className="text-[28px] leading-[32px]font-bold mt-[20px] mb-[20px] 
         tablet:text-[48px] tablet:leading-[55px] tablet:mb-[24px]"
           >
             Add the medicines you need online now
@@ -47,6 +47,6 @@ export default function PromoContent() {
         </div>
       </div>
       <PromoImage />
-    </section>
+    </div>
   );
 }

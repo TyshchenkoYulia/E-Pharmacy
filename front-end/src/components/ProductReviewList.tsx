@@ -11,10 +11,10 @@ export default function ProductReviewList() {
   }, []);
 
   return (
-    <section className="flex flex-col gap-[20px]">
+    <div className="flex flex-col gap-[20px]">
       {randomReviews.map((review: ProductReview) => (
         <ProductReviewItem key={review.id} review={review} />
       ))}
-    </section>
+    </div>
   );
 }

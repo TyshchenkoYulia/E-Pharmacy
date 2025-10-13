@@ -21,7 +21,7 @@ export default function MedicineFilterContent({
   onReset,
 }: Props) {
   return (
-    <section className="mt-[40px] mb-[40px] flex flex-col gap-[20px] ">
+    <div className="mt-[40px] mb-[40px] flex flex-col gap-[20px] ">
       <div
         className="flex flex-col gap-[20px] tablet:flex-row 
     tablet:items-center "
@@ -92,6 +92,6 @@ export default function MedicineFilterContent({
         <RestartAltIcon />
         Reset filter
       </button>
-    </section>
+    </div>
   );
 }

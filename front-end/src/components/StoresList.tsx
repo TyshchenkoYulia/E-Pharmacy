@@ -21,16 +21,16 @@ export default function StoresList() {
   );
 
   return (
-    <section className="mt-[40px]">
-      <div
-        className=" grid gap-[20px] justify-center
+    <>
+      <ul
+        className="mt-[40px] grid gap-[20px] justify-center
       grid-cols-1
       tablet:grid-cols-2
       desktop:grid-cols-3
       justify-items-center"
       >
         {paginatedStores.map((store, index) => (
-          <div
+          <li
             key={index}
             className="relative  h-[202px] w-[334px]  rounded-[27px] bg-lightGreen 
             p-[32px] hover:shadow-md transition
@@ -122,14 +122,14 @@ export default function StoresList() {
               alt="Background Icon"
               className="absolute bottom-0 right-0   "
             />
-          </div>
+          </li>
         ))}
-      </div>
+      </ul>
       <Pagination
         currentPage={currentPage}
         totalPages={totalPages}
         onPageChange={setCurrentPage}
       />
-    </section>
+    </>
   );
 }

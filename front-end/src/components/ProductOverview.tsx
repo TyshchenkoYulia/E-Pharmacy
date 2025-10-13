@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { Product } from "../assets/data/products";
+import type { Product } from "../types/productTypes";
 import CurrencyPoundIcon from "@mui/icons-material/CurrencyPound";
 
 interface Props {
@@ -15,7 +15,7 @@ export default function ProductOverview({ product }: Props) {
   };
 
   return (
-    <section
+    <div
       className=" flex flex-col items-center gap-[28px] 
     tablet:flex-row tablet:justify-center tablet:gap-[16px]
     desktop:flex-col"
@@ -87,6 +87,6 @@ export default function ProductOverview({ product }: Props) {
           </button>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

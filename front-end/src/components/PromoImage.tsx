@@ -7,7 +7,7 @@ import girlMob2x from "../assets/img/girl-mob-2x.png";
 
 export default function PromoImage() {
   return (
-    <div className="w-full flex justify-center mb-[20px] desktop:mb-0 desktop:justify-end">
+    <div className="w-full flex justify-center   desktop:justify-end">
       <picture>
         {/* Desktop */}
         <source

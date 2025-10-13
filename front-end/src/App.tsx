@@ -12,22 +12,20 @@ import ProductPage from "./pages/ProductPage";
 export default function App() {
   return (
     <Router>
-      <div className="flex flex-col min-h-screen">
-        <Header />
+      <Header />
 
-        <main className="flex-grow">
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/medicine-store" element={<MedicineStorePage />} />
-            <Route path="/medicine" element={<MedicinePage />} />
-            <Route path="/product/:id" element={<ProductPage />} />
-            <Route path="/register" element={<RegisterPage />} />
-            <Route path="/login" element={<LoginPage />} />
-          </Routes>
-        </main>
+      <main className="flex-grow">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/medicine-store" element={<MedicineStorePage />} />
+          <Route path="/medicine" element={<MedicinePage />} />
+          <Route path="/product/:id" element={<ProductPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/login" element={<LoginPage />} />
+        </Routes>
+      </main>
 
-        <Footer />
-      </div>
+      <Footer />
     </Router>
   );
 }

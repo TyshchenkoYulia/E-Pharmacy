@@ -8,12 +8,12 @@ export default function ReviewsItem() {
   ];
 
   return (
-    <section
+    <ul
       className="mt-[64px] tablet:mt-[88px] px-4 flex justify-center 
     gap-[16px] desktop:gap-[28px]"
     >
       {reviews.map((review, idx) => (
-        <div
+        <li
           key={idx}
           className={`${visibilityClasses[idx]} relative flex flex-col items-center min-w-[280px]`}
         >
@@ -32,8 +32,8 @@ export default function ReviewsItem() {
               {review.testimonial}
             </p>
           </div>
-        </div>
+        </li>
       ))}
-    </section>
+    </ul>
   );
 }

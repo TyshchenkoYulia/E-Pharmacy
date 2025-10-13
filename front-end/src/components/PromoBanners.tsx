@@ -17,7 +17,7 @@ export default function PromoBanners() {
   return (
     <section
       className="flex flex-col justify-center items-center gap-[16px] 
-    mt-[40px] mx-[20px] tablet:mt-[64px] tablet:mx-[32px]
+    py-[40px] px-[20px] tablet:py-[64px] tablet:px-[32px]
     tablet:gap-[24px] tablet:grid tablet:grid-cols-2 tablet:justify-items-center
      desktop:grid-cols-3"
     >
@@ -46,8 +46,8 @@ export default function PromoBanners() {
             </p>
           </div>
 
-          <div className="flex flex-col gap-[30px] ">
-            <h3 className="text-[16px] leading-[18px] tablet:text-[20px] tablet:leading-[24px]">
+          <div className=" ">
+            <h3 className="text-[16px] leading-[18px] tablet:text-[20px] tablet:leading-[24px] mb-[30px]">
               {banner.title}
             </h3>
             <button

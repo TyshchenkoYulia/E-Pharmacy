@@ -7,7 +7,7 @@ import LoginModal from "./LoginModal";
 export default function MedicineCard({ product }: { product: Product }) {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
-  const isAuthenticated = false; 
+  const isAuthenticated = false;
 
   const addToCart = () => {
     if (!isAuthenticated) {
@@ -19,7 +19,7 @@ export default function MedicineCard({ product }: { product: Product }) {
   };
 
   return (
-    <section className=" flex flex-col items-center gap-[8px]">
+    <div className=" flex flex-col items-center gap-[8px]">
       <div
         className="h-[300px] w-[335px] border border-greenPrimary rounded-[20px] overflow-hidden
       tablet:h-[260px] tablet:w-[226px]
@@ -78,6 +78,6 @@ export default function MedicineCard({ product }: { product: Product }) {
         isOpen={isLoginModalOpen}
         onClose={() => setIsLoginModalOpen(false)}
       />
-    </section>
+    </div>
   );
 }

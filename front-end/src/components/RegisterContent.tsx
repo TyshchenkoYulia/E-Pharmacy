@@ -2,10 +2,7 @@ import WhiteRoundPill from "../assets/img/white-round-pill.svg";
 
 export default function RegisterContent() {
   return (
-    <section
-      className=" w-full flex flex-col items-center 
-    justify-center  py-12 mt-[120px] tablet:mt-[220px] "
-    >
+    <div className=" w-fit mx-auto py-[48px] ">
       <div className="relative w-[336px] h-[136px] tablet:w-[614px] tablet:h-[240px]">
         <h2
           className="
@@ -29,6 +26,6 @@ export default function RegisterContent() {
           worries with us
         </h2>
       </div>
-    </section>
+    </div>
   );
 }

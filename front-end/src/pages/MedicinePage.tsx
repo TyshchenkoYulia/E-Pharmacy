@@ -34,7 +34,10 @@ export default function MedicinePage() {
   };
 
   return (
-    <section className="mt-[120px] mb-[80px] px-[20px]">
+    <section
+      className="pt-[120px] pb-[80px] px-[20px] 
+    tablet:pt-[120px] tablet:pb-[150px] tablet:px-[32px] "
+    >
       <h1 className="text-[28px] leading-[32px] font-bold">Medicine</h1>
 
       <MedicineFilterContent

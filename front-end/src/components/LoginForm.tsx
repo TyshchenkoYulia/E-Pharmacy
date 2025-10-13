@@ -17,53 +17,63 @@ export default function LoginForm() {
 
   const onSubmit = (data: LoginFormData) => {
     console.log("Login data:", data);
-
     navigate("/");
   };
 
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="w-full max-w-lg mx-auto flex flex-col gap-4 "
+      className="mx-auto flex flex-col gap-6 items-center  desktop:pt-[50px]"
     >
-      <input
-        type="email"
-        placeholder="Email address"
-        {...register("email", { required: "Email is required" })}
-        className="w-[335px] max-w-full h-[44px] px-4 bg-whitePrimary border
-           border-grayColor rounded-[60px] outline-none mx-auto"
-      />
-      {errors.email && (
-        <span className="text-redText text-sm text-center">
-          {errors.email.message}
-        </span>
-      )}
+      {/* Email */}
+      <div className="relative w-[335px] max-w-full">
+        <input
+          type="email"
+          placeholder="Email address"
+          {...register("email", { required: "Email is required" })}
+          className="w-full h-[44px] px-4 bg-whitePrimary border border-grayColor 
+                     rounded-[60px] outline-none"
+        />
+        {errors.email && (
+          <span className="absolute left-4 top-[48px] text-redText text-[10px]">
+            {errors.email.message}
+          </span>
+        )}
+      </div>
 
-      <input
-        type="password"
-        placeholder="Password"
-        {...register("password", { required: "Password is required" })}
-        className="w-[335px] max-w-full h-[44px] px-4 bg-whitePrimary border
-           border-grayColor rounded-[60px] outline-none mx-auto"
-      />
-      {errors.password && (
-        <span className="text-redText text-sm text-center">
-          {errors.password.message}
-        </span>
-      )}
+      {/* Password */}
+      <div className="relative w-[335px] max-w-full">
+        <input
+          type="password"
+          placeholder="Password"
+          {...register("password", { required: "Password is required" })}
+          className="w-full h-[44px] px-4 bg-whitePrimary border border-grayColor 
+                     rounded-[60px] outline-none"
+        />
+        {errors.password && (
+          <span className="absolute left-4 top-[48px] text-redText text-[10px]">
+            {errors.password.message}
+          </span>
+        )}
+      </div>
 
+      {/* Submit button */}
       <button
         type="submit"
         className="w-[335px] h-[44px] bg-greenPrimary text-whitePrimary 
-        font-semibold rounded-[60px] mt-2 mx-auto tablet:w-[280px] 
-        transition-transform hover:scale-110 hover:text-hoverGreen"
+                   font-semibold rounded-[60px] 
+                  transition-transform hover:scale-110 hover:text-hoverGreen"
       >
         Login
       </button>
 
-      <p className="text-center text-sm text-gray-600 col-span-full">
+      {/* Register link */}
+      <p className="text-center text-sm text-gray-600">
         Don’t have an account?{" "}
-        <Link to="/register" className="text-greenPrimary font-semibold">
+        <Link
+          to="/register"
+          className="text-greenPrimary font-semibold relative z-10"
+        >
           Register
         </Link>
       </p>
