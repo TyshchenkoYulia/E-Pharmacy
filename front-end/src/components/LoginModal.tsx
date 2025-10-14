@@ -42,7 +42,8 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
       isOpen={isOpen}
       onRequestClose={onClose}
       overlayClassName="fixed inset-0 bg-secondaryText bg-opacity-50 flex items-center justify-center z-50"
-      className="relative bg-whitePrimary rounded-[20px] shadow-lg w-[463px] py-[50px] px-[70px] 
+      className="relative bg-whitePrimary rounded-[20px] shadow-lg 
+      w-[463px] py-[50px] px-[70px] 
 "
     >
       <h2 className="text-[20px] font-bold text-center text-primaryText mb-[16px]">

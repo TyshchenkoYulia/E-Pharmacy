@@ -10,7 +10,8 @@ export default function LoginPage() {
       className="pt-[120px] pb-[80px] px-[20px] 
     tablet:pt-[170px] tablet:pb-[130px] tablet:px-[32px] 
      relative min-h-screen desktop:flex
-    desktop:justify-center desktop:items-start desktop:gap-[54px]"
+    desktop:justify-center desktop:items-start desktop:gap-[54px]
+    desktop:pt-[200px]"
     >
       <RegisterContent />
 
