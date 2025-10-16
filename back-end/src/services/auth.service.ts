@@ -64,4 +64,15 @@ export class AuthService {
   async logout(): Promise<LogoutResponseDto> {
     return { message: "Вихід виконано успішно." };
   }
+
+  async deleteUser(userId: number): Promise<{ message: string }> {
+    const existingUser = await prisma.user.findUnique({
+      where: { id: userId },
+    });
+    if (!existingUser) throw ApiError.notFound("Користувач не знайдений");
+
+    await prisma.user.delete({ where: { id: userId } });
+
+    return { message: "Користувач успішно видалений" };
+  }
 }

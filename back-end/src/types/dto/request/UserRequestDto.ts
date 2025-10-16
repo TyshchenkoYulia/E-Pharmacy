@@ -4,7 +4,7 @@ export interface User {
   name: string;
   email: string;
   password: string;
-  spent: string; // Prisma повертає Decimal як string
+  spent: string;
   phone: string;
   address?: string | null;
   registerDate: Date;

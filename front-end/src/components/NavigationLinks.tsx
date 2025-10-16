@@ -31,7 +31,7 @@ export default function NavigationLinks({
           to="/"
           onClick={onLinkClick}
           className={`${textClass} font-sans font-semibold  border-whitePrimary 
-         border-[8px] rounded-[60px] px-[20px] py-[8px] text-center w-fit `}
+         border-[8px] rounded-[60px] px-[20px] py-[8px] text-center  `}
         >
           Home
         </Link>
@@ -40,7 +40,7 @@ export default function NavigationLinks({
           onClick={onLinkClick}
           style={{ color: "#93939A" }}
           className={`${textClass}  font-sans font-semibold  border-whitePrimary 
-         border-[8px] rounded-[60px] px-[20px] py-[8px] text-center w-fit
+         border-[8px] rounded-[60px] px-[20px] py-[8px] text-center
          bg-whitePrimary `}
         >
           Medicine store
@@ -51,7 +51,7 @@ export default function NavigationLinks({
           // style={{ color: "#93939A" }}
           className={({ isActive }) =>
             `${textClass} font-sans font-semibold border-[8px] rounded-[60px] 
-       px-[20px] py-[8px] text-center w-fit ${
+       px-[20px] py-[8px] text-center ${
          isActive
            ? "bg-greenPrimary border-whitePrimary text-whitePrimary"
            : "border-whitePrimary bg-whitePrimary text-secondaryText"

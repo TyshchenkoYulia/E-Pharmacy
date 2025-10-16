@@ -32,4 +32,18 @@ export class AuthController {
       next(error);
     }
   };
+
+  deleteUser = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const userId = Number(req.params.id);
+      if (isNaN(userId)) {
+        return res.status(400).json({ message: "Невірний ID користувача" });
+      }
+
+      const result = await this.authService.deleteUser(userId);
+      res.status(200).json(result);
+    } catch (error) {
+      next(error);
+    }
+  };
 }

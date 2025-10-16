@@ -1,44 +1,45 @@
 import prisma from "../config/prismaClient";
-import { User } from "../types/dto/request/UserRequestDto";
+import { ApiError } from "../utils/ApiError";
 import {
   UserInfoResponseDto,
   UserListItemDto,
   UserListResponseDto,
 } from "../types/dto/response/UserResponseDto";
+import { User } from "../types/dto/request/UserRequestDto";
 
 export class UserService {
-  //   async getUserInfo(userId: number): Promise<UserInfoResponseDto> {
-  //     const user = await prisma.user.findUnique({
-  //       where: { id: userId },
-  //       select: {
-  //         id: true,
-  //         name: true,
-  //         email: true,
-  //       },
-  //     });
-  //     if (!user) {
-  //       throw new Error("Користувач не знайдений");
-  //     }
-  //     return user;
-  //   }
-  // async getAllUsers(): Promise<UserListResponseDto> {
-  //   const users = await prisma.user.findMany({
-  //     select: {
-  //       id: true,
-  //       name: true,
-  //       email: true,
-  //       phone: true,
-  //       registerDate: true,
-  //     },
-  //     orderBy: { id: "asc" },
-  //   });
-  //   const data: UserListItemDto[] = users.map((user: User) => ({
-  //     id: user.id,
-  //     name: user.name,
-  //     email: user.email,
-  //     phone: user.phone,
-  //     registerDate: user.registerDate.toISOString(),
-  //   }));
-  //   return { data };
-  // }
+  async getAllUsers(): Promise<UserListResponseDto> {
+    const users = await prisma.user.findMany({
+      orderBy: { registerDate: "desc" },
+    });
+
+    if (!users || users.length === 0) {
+      throw ApiError.notFound("Користувачі не знайдені");
+    }
+
+    const data: UserListItemDto[] = users.map((user) => ({
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      phone: user.phone,
+      registerDate: user.registerDate.toISOString(),
+    }));
+
+    return { data };
+  }
+
+  async getUserById(userId: number): Promise<User> {
+    const user = await prisma.user.findUnique({
+      where: { id: userId },
+    });
+
+    if (!user) throw ApiError.notFound("Користувач не знайдений");
+
+    const userDto: User = {
+      ...user,
+      spent: user.spent.toString(),
+    };
+
+    return userDto;
+  }
 }

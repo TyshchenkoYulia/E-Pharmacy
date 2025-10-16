@@ -1,25 +1,54 @@
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-
-interface RegisterFormData {
-  username: string;
-  email: string;
-  phone: string;
-  password: string;
-}
+import type { RegisterFormData, RegisterResponseDto } from "../types/authTypes";
+import { useState } from "react";
+import axios from "axios";
 
 export default function RegisterForm() {
   const navigate = useNavigate();
-
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<RegisterFormData>();
 
-  const onSubmit = (data: RegisterFormData) => {
-    console.log("Register data:", data);
-    navigate("/login");
+  const [message, setMessage] = useState<string | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  const onSubmit = async (data: RegisterFormData) => {
+    try {
+      setMessage(null);
+      setErrorMessage(null);
+
+      const payload = {
+        name: data.username,
+        email: data.email,
+        phone: data.phone,
+        password: data.password,
+      };
+
+      const response = await axios.post<RegisterResponseDto>(
+        "http://localhost:3000/api/auth/register",
+        payload
+      );
+
+      console.log("Register data:", data);
+
+      setMessage(response.data.message);
+
+      navigate("/", { state: { userName: payload.name } });
+
+      reset();
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        setErrorMessage(
+          error.response?.data?.message || "Помилка при реєстрації"
+        );
+      } else {
+        setErrorMessage("Невідома помилка");
+      }
+    }
   };
 
   return (
@@ -100,6 +129,9 @@ export default function RegisterForm() {
       >
         Register
       </button>
+
+      {message && <p className="text-greenPrimary mt-2">{message}</p>}
+      {errorMessage && <p className="text-redText mt-2">{errorMessage}</p>}
 
       {/* Login link */}
       <p className="text-center text-sm text-gray-600 ">
