@@ -9,9 +9,17 @@ interface MainLinksProps {
 export function MainLinks({ onLinkClick }: MainLinksProps) {
   return (
     <div
-      className="flex flex-col gap-[4px] items-center desktop:flex-row 
+      className="relative flex flex-col gap-[3px] items-center desktop:flex-row 
     desktop:absolute desktop:left-1/2 desktop:transform desktop:-translate-x-1/2"
     >
+      <span
+        className="absolute top-[50px] left-[45%] w-4 h-2 bg-whitePrimary 
+      desktop:top-[33%] desktop:left-[90px] desktop:h-4"
+      ></span>
+      <span
+        className="absolute top-[105px] left-[45%] w-4 h-2 bg-whitePrimary 
+      desktop:top-[33%] desktop:left-[245px] desktop:h-4"
+      ></span>
       <NavLink
         to="/"
         onClick={onLinkClick}
