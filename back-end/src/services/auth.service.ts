@@ -57,6 +57,7 @@ export class AuthService {
 
     return {
       message: "Вхід виконано успішно",
+      name: user.name,
       token,
     };
   }

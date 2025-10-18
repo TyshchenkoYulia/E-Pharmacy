@@ -4,6 +4,7 @@ export interface RegisterResponseDto {
 
 export interface LoginResponseDto {
   token: string;
+  name: string;
   message: string;
 }
 

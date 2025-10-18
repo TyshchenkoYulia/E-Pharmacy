@@ -15,3 +15,14 @@ export interface RegisterRequestDto {
 export interface RegisterResponseDto {
   message: string;
 }
+
+export interface LoginFormData {
+  email: string;
+  password: string;
+}
+
+export interface LoginResponseDto {
+  message: string;
+  name: string;
+  token: string;
+}
