@@ -39,6 +39,16 @@ export default function Header() {
   };
 
   useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      setUserName(null);
+      setIsAuthenticated(false);
+      return;
+    }
+
+    setIsAuthenticated(true);
+
     if (location.state?.userName) {
       setUserName(location.state.userName);
       localStorage.setItem("userName", location.state.userName);
@@ -46,20 +56,14 @@ export default function Header() {
       const storedName = localStorage.getItem("userName");
       if (storedName) setUserName(storedName);
       else {
-        const token = localStorage.getItem("token");
-        if (token) {
-          try {
-            const payload = JSON.parse(atob(token.split(".")[1]));
-            setUserName(payload.email.split("@")[0]);
-          } catch {
-            console.warn("Token parsing failed");
-          }
+        try {
+          const payload = JSON.parse(atob(token.split(".")[1]));
+          setUserName(payload.email.split("@")[0]);
+        } catch {
+          console.warn("Token parsing failed");
         }
       }
     }
-
-    const token = localStorage.getItem("token");
-    setIsAuthenticated(!!token);
   }, [location.state]);
 
   const getUserInitial = () => (userName ? userName[0].toUpperCase() : "");

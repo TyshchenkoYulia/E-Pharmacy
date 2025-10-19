@@ -24,5 +24,10 @@ export interface LoginFormData {
 export interface LoginResponseDto {
   message: string;
   name: string;
+  userId: number;
   token: string;
+}
+
+export interface DeleteUserResponseDto {
+  message: string;
 }

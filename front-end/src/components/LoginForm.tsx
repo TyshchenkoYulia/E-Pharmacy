@@ -1,8 +1,8 @@
+import type { LoginFormData, LoginResponseDto } from "../types/authTypes";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
 import { useState } from "react";
-import type { LoginFormData, LoginResponseDto } from "../types/authTypes";
+import axios from "axios";
 
 export default function LoginForm() {
   const navigate = useNavigate();
@@ -28,12 +28,13 @@ export default function LoginForm() {
 
       setMessage(response.data.message);
 
-      // Зберігаємо токен
+      // Зберігаємо токен, ім’я та Id
       localStorage.setItem("token", response.data.token);
 
       if (response.data.name) {
         localStorage.setItem("userName", response.data.name);
       }
+      localStorage.setItem("userId", response.data.userId.toString());
 
       // Передаємо ім’я користувача в  Header
       navigate("/", { state: { userName: response.data.name } });
@@ -43,11 +44,11 @@ export default function LoginForm() {
       console.log("Успішний вхід!", response.data.name);
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {
-        setErrorMessage(error.response?.data?.message || "Помилка при вході");
+        setErrorMessage(error.response?.data?.message || "Error logging in");
       } else if (error instanceof Error) {
         setErrorMessage(error.message);
       } else {
-        setErrorMessage("Невідома помилка");
+        setErrorMessage("Unknown error");
       }
     }
   };

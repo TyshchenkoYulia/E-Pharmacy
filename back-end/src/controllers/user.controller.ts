@@ -17,7 +17,7 @@ export class UserController {
     try {
       const userId = Number(req.params.id);
       if (isNaN(userId)) {
-        return res.status(400).json({ message: "Невірний ID користувача" });
+        return res.status(400).json({ message: "Invalid user ID" });
       }
 
       const user = await this.userService.getUserById(userId);

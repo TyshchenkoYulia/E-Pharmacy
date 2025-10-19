@@ -16,7 +16,7 @@ export function AuthLinks({
   isInModal = false,
 }: AuthLinksProps) {
   const textClass = `font-sans font-semibold ${
-    isInModal || isHome ? "text-whitePrimary" : "text-greenPrimary"
+    isInModal || isHome ? "text-whitePrimary " : "text-greenPrimary "
   }`;
 
   return (

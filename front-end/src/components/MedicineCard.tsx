@@ -1,21 +1,25 @@
 import type { Product } from "../types/productTypes";
 import CurrencyPoundIcon from "@mui/icons-material/CurrencyPound";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import LoginModal from "./LoginModal";
 
 export default function MedicineCard({ product }: { product: Product }) {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  const isAuthenticated = false;
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    setIsAuthenticated(!!token);
+  }, []);
 
   const addToCart = () => {
     if (!isAuthenticated) {
       setIsLoginModalOpen(true);
       return;
     }
+
     console.log("Added to cart:", { product });
-    // в кошик
   };
 
   return (

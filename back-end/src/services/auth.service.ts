@@ -2,10 +2,12 @@ import prisma from "../config/prismaClient";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import {
+  DeleteUserDto,
   LoginUserDto,
   RegisterUserDto,
 } from "../types/dto/request/AuthRequestDto";
 import {
+  DeleteUserResponseDto,
   LoginResponseDto,
   LogoutResponseDto,
   RegisterResponseDto,
@@ -21,7 +23,7 @@ export class AuthService {
       where: { email },
     });
     if (existingUser)
-      throw ApiError.conflict("Користувач з такою поштою вже існує");
+      throw ApiError.conflict("A user with this email already exists");
 
     // Хешування пароля
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -37,17 +39,17 @@ export class AuthService {
       },
     });
 
-    return { message: "Користувач успішно зареєстрований." };
+    return { message: "User registered successfully." };
   }
 
   async login(data: LoginUserDto): Promise<LoginResponseDto> {
     const { email, password } = data;
 
     const user = await prisma.user.findUnique({ where: { email } });
-    if (!user) throw ApiError.unauthorized("Невірні облікові дані");
+    if (!user) throw ApiError.unauthorized("Invalid credentials");
 
     const isPasswordValid = await bcrypt.compare(password, user.password);
-    if (!isPasswordValid) throw ApiError.unauthorized("Невірні облікові дані");
+    if (!isPasswordValid) throw ApiError.unauthorized("Invalid credentials");
 
     const token = jwt.sign(
       { id: user.id, email: user.email },
@@ -56,24 +58,26 @@ export class AuthService {
     );
 
     return {
-      message: "Вхід виконано успішно",
+      message: "Login successful",
       name: user.name,
+      userId: user.id,
       token,
     };
   }
 
   async logout(): Promise<LogoutResponseDto> {
-    return { message: "Вихід виконано успішно." };
+    return { message: "Logout successful." };
   }
 
-  async deleteUser(userId: number): Promise<{ message: string }> {
+  async deleteUser(data: DeleteUserDto): Promise<DeleteUserResponseDto> {
+    const { userId } = data;
     const existingUser = await prisma.user.findUnique({
       where: { id: userId },
     });
-    if (!existingUser) throw ApiError.notFound("Користувач не знайдений");
+    if (!existingUser) throw ApiError.notFound("User not found");
 
     await prisma.user.delete({ where: { id: userId } });
 
-    return { message: "Користувач успішно видалений" };
+    return { message: "User deleted successfully." };
   }
 }

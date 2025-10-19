@@ -14,7 +14,7 @@ export class UserService {
     });
 
     if (!users || users.length === 0) {
-      throw ApiError.notFound("Користувачі не знайдені");
+      throw ApiError.notFound("Users not found");
     }
 
     const data: UserListItemDto[] = users.map((user) => ({
@@ -33,7 +33,7 @@ export class UserService {
       where: { id: userId },
     });
 
-    if (!user) throw ApiError.notFound("Користувач не знайдений");
+    if (!user) throw ApiError.notFound("User not found");
 
     const userDto: User = {
       ...user,

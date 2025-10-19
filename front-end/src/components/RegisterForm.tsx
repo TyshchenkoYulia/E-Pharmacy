@@ -43,10 +43,10 @@ export default function RegisterForm() {
     } catch (error) {
       if (axios.isAxiosError(error)) {
         setErrorMessage(
-          error.response?.data?.message || "Помилка при реєстрації"
+          error.response?.data?.message || "Error during registration"
         );
       } else {
-        setErrorMessage("Невідома помилка");
+        setErrorMessage("Unknown error");
       }
     }
   };
@@ -92,10 +92,16 @@ export default function RegisterForm() {
       <div className="relative w-[335px] max-w-full">
         <input
           type="tel"
-          placeholder="Phone number"
-          {...register("phone", { required: "Phone number is required" })}
+          placeholder="+38(0__) ___-__-__"
+          {...register("phone", {
+            required: "Phone number is required",
+            pattern: {
+              value: /^\+38\(0\d{2}\)\d{3}-\d{2}-\d{2}$/,
+              message: "Invalid phone format, e.g. +38(067) 123-45-67",
+            },
+          })}
           className="w-full h-[44px] px-4 bg-whitePrimary border border-grayColor 
-                     rounded-[60px] outline-none"
+               rounded-[60px] outline-none"
         />
         {errors.phone && (
           <span className="absolute left-4 top-[48px] text-redText text-[10px]">
