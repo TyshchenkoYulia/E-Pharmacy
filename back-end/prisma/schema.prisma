@@ -33,24 +33,41 @@ model Pharmacy {
 }
 
 model Product {
-  id        Int     @id @default(autoincrement())
+  id        Int             @id @default(autoincrement())
   photo     String?
   name      String
   suppliers String?
-  stock     Int     @default(0)
-  price     Decimal @db.Decimal(10,2)
+  stock     Int             @default(0)
+  price     Decimal         @db.Decimal(10,2)
   category  String
+
+  reviews   ProductReview[]
 
   @@map("products") 
 }
 
-model Review {
+model AppReview {
   id          Int    @id @default(autoincrement())
   name        String
+  photo       String
   testimonial String
 
-  @@map("reviews") 
+  @@map("app_reviews") 
 }
+
+model ProductReview {
+  id        Int      @id @default(autoincrement())
+  photo     String
+  name      String
+  date      DateTime
+  text      String
+  rating    Int
+  product   Product  @relation(fields: [productId], references: [id])
+  productId Int
+
+  @@map("product_reviews")
+}
+
 
 model Supplier {
   id        Int      @id @default(autoincrement())

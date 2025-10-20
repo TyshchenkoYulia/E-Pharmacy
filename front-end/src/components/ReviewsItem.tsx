@@ -1,6 +1,25 @@
-import reviews from "../assets/data/storeReviews";
+import { useEffect, useState } from "react";
+import type { AppReview } from "../types/reviewTypes";
+import axios from "axios";
 
 export default function ReviewsItem() {
+  const [reviews, setReviews] = useState<AppReview[]>([]);
+
+  useEffect(() => {
+    const fetchReviews = async () => {
+      try {
+        const response = await axios.get<{ data: AppReview[] }>(
+          "http://localhost:3000/api/reviews"
+        );
+        setReviews(response.data.data);
+      } catch (err) {
+        console.error("Error fetching reviews:", err);
+      }
+    };
+
+    fetchReviews();
+  }, []);
+
   const visibilityClasses = [
     "flex",
     "hidden tablet:flex",

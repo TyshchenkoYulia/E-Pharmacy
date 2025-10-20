@@ -1,15 +1,34 @@
+import type { Pharmacy } from "../types/storesTypes";
+import { useEffect, useState } from "react";
 import AddressIcon from "../assets/img/address-icon.svg";
 import PhoneIcon from "../assets/img/phone-icon.svg";
 import StarIcon from "../assets/img/star-icon.svg";
 import BgIcon1 from "../assets/img/bg-icon-1.svg";
 import BgIcon2 from "../assets/img/bg-icon-2.svg";
 import BgIcon3 from "../assets/img/bg-icon-3.svg";
-import stores from "../assets/data/stores";
+import axios from "axios";
 
 export default function NearestStoresList() {
-  const shuffledStores = [...stores].sort(() => 0.5 - Math.random());
+  const [pharmacies, setPharmacies] = useState<Pharmacy[]>([]);
 
-  const randomStores = shuffledStores.slice(0, 6);
+  useEffect(() => {
+    const fetchPharmacies = async () => {
+      try {
+        const response = await axios.get<{ data: Pharmacy[] }>(
+          "http://localhost:3000/api/pharmacies"
+        );
+
+        setPharmacies(response.data.data);
+      } catch (error) {
+        console.error("Error fetching pharmacies:", error);
+      }
+    };
+
+    fetchPharmacies();
+  }, []);
+
+  const shuffled = [...pharmacies].sort(() => 0.5 - Math.random());
+  const randomPharmacies = shuffled.slice(0, 6);
 
   return (
     <ul
@@ -19,7 +38,7 @@ export default function NearestStoresList() {
         desktop:grid-cols-3
         justify-items-center"
     >
-      {randomStores.map((store, index) => (
+      {randomPharmacies.map((pharmacy, index) => (
         <li
           key={index}
           className="relative  h-[202px] w-[334px]  rounded-[27px] bg-lightGreen 
@@ -32,7 +51,7 @@ export default function NearestStoresList() {
                 className="text-[16px] leading-[18px] font-600 mb-[32px]
                   tablet:text-[20px]  tablet:leading-[24px] tablet:mb-[20px]"
               >
-                {store.name}
+                {pharmacy.name}
               </h3>
 
               <div className="flex gap-[8px] mb-[18px] items-start">
@@ -42,13 +61,13 @@ export default function NearestStoresList() {
                     className="text-[14px] leading-[18px] font-400 text-secondaryText
                       tablet:text-[16px]  tablet:leading-[20px]"
                   >
-                    {store.address}
+                    {pharmacy.address}
                   </p>
                   <p
                     className="text-[14px] leading-[18px] font-400 text-secondaryText
                       tablet:text-[16px]  tablet:leading-[20px]"
                   >
-                    {store.city}
+                    {pharmacy.city}
                   </p>
                 </div>
               </div>
@@ -56,7 +75,7 @@ export default function NearestStoresList() {
               <div className="flex gap-[8px] ">
                 <img src={PhoneIcon} alt="Phone Icon" />
                 <p className="text-[14px] leading-[18px] font-400 text-secondaryText">
-                  {store.phone}
+                  {pharmacy.phone}
                 </p>
               </div>
             </div>
@@ -65,7 +84,7 @@ export default function NearestStoresList() {
               <div className="flex gap-[6px] tablet:ml-[30px]">
                 <img src={StarIcon} alt="Star Icon" />
                 <span className="text-[14px] leading-[18px] font-medium text-primaryText">
-                  {store.rating}
+                  {pharmacy.rating}
                 </span>
               </div>
               {(() => {
